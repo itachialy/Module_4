@@ -14,10 +14,22 @@ public class SpiceController {
         return "form"; // Trả về view chứa form lựa chọn gia vị
     }
 
-    @PostMapping("/save")
-    public String save(@RequestParam("condiment") String[] condiment, Model model) {
-        model.addAttribute("condiment", condiment);
-        return "result";
+//        @PostMapping("/save")
+//        public String save(@RequestParam("condiment") String[] condiment, Model model) {
+//        model.addAttribute("condiment", condiment);
+//        return "result";
+@PostMapping("/save")
+public String save(@RequestParam("lettuce") String lettuce,
+                   @RequestParam("tomato") String tomato,
+                   @RequestParam("mustard") String mustard,
+                   @RequestParam("sprouts") String sprouts,
+                   Model model) {
+    model.addAttribute("lettuce", lettuce);
+    model.addAttribute("tomato", tomato);
+    model.addAttribute("mustard", mustard);
+    model.addAttribute("sprouts", sprouts);
+    return "result"; // Trả về view kết quả
+}
     }
 
-}
+

@@ -2,16 +2,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Kết quả khai báo y tế</title>
+    <title>$Title$</title>
 </head>
 <body>
-<h2>Kết quả khai báo y tế</h2>
+<h1>Kết quả khai báo</h1>
 
-<p><strong>Họ tên:</strong> ${declaration.name}</p>
-<p><strong>Năm sinh:</strong> ${declaration.dob}</p>
-<p><strong>Giới tính:</strong> ${declaration.gender}</p>
-<p><strong>Quốc tịch:</strong> ${declaration.quocTich}</p>
-<p><strong>Số hộ chiếu/CCCD:</strong> ${declaration.cccd}</p>
+<h3>Thông tin cá nhân:</h3>
+<p>Họ tên: ${declaration.name}</p>
+<p>Năm sinh: ${declaration.dob}</p>
+<p>Giới tính: ${declaration.gender}</p>
+<p>Quốc tịch: ${declaration.quocTich}</p>
+<p>Số CCCD: ${declaration.cccd}</p>
 
 <h3>Triệu chứng trong 14 ngày qua</h3>
 <c:choose>
@@ -40,7 +41,7 @@
         <p>Không có tiếp xúc nào được ghi nhận.</p>
     </c:otherwise>
 </c:choose>
+<a href="/">Quay về trang chủ</a>
 
-<a href="/">Trở về trang khai báo</a>
 </body>
 </html>

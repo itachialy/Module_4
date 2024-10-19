@@ -10,4 +10,5 @@ public interface IStudentRepo {
     Student findById(int id);
     void update(Student student);
     void delete(int id);
+
 }

@@ -1,30 +1,10 @@
-package com.example.declaration;
-
+package com.example.demo_binding;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
-import java.util.List;
 
 public class Declaration {
     private String[] symptoms; // Mảng lưu triệu chứng
     private String[] exposure;  // Mảng lưu lịch sử phơi nhiễm
-
-    public String[] getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(String[] symptoms) {
-        this.symptoms = symptoms;
-    }
-
-    public String[] getExposure() {
-        return exposure;
-    }
-
-    public void setExposure(String[] exposure) {
-        this.exposure = exposure;
-    }
-
     private String name;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
@@ -34,6 +14,14 @@ public class Declaration {
     private String vehicle;
 
     public Declaration() {
+    }
+
+    public String getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
     }
 
     public Declaration(String name, LocalDate dob, String gender, String quocTich,
@@ -85,13 +73,20 @@ public class Declaration {
     public void setCccd(int cccd) {
         this.cccd = cccd;
     }
-
-    public String getVehicle() {
-        return vehicle;
+    public String[] getSymptoms() {
+        return symptoms;
     }
 
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
+    public void setSymptoms(String[] symptoms) {
+        this.symptoms = symptoms;
+    }
+
+    public String[] getExposure() {
+        return exposure;
+    }
+
+    public void setExposure(String[] exposure) {
+        this.exposure = exposure;
     }
 
 }
