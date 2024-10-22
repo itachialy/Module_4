@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .warning{
+            color: red;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/search}" method="get">
+    <input type="text" name="name" placeholder="Tìm kiếm theo tên học viên"
+           th:value="${param.name}" /> <!--giữ giá trị-->
+    <button type="submit">Tìm kiếm</button>
+
+</form> <br>
+<a th:href="@{/show-create-form}">Thêm mới học viên</a>
+<p class="warning" th:text="${msg}"></p>
+<p class="warning" th:text="${edits}"></p>
+<p class="warning" th:text="${del}"></p>
+<h2>Danh sách học viên</h2>
+<table border="1px">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Ngày sinh</th>
+        <th>Lương</th>
+        <th colspan="3">Chức năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s, loop : ${students}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.email}"></td>
+        <td th:text="${s.dob}"></td>
+        <td th:text="${#numbers.formatInteger(s.salary,3,'COMMA')}"></td>
+        <td>
+            <a th:href="@{/show-edit-form/{id}(id=${s.id})}">Sửa</a>
+            <form th:action="@{/delete/{id}(id=${s.id})}" method="post" style="display:inline;">
+                <button type="submit"
+                        th:data="|Are you sure you want delete this student ${s.name}|"
+                        onclick="return confirm(this.getAttribute('data'));">Xóa</button>
+            </form>
+            <a th:href="@{/view/{id}(id=${s.id})}">View</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
