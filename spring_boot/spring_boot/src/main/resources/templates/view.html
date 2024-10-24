@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-<h3>View Student</h3>
+<h3>View Products</h3>
 <p>
     <a th:href="@{/}">
         Return to Home
@@ -32,23 +32,19 @@
 <table>
     <tr>
         <th>ID</th>
-        <td th:text="${students.id}" ></td>
+        <td th:text="${product.id}" ></td>
     </tr>
     <tr>
-        <th>Name</th>
-        <td th:text="${students.name}"></td>
+        <th>Tên sản phẩm</th>
+        <td th:text="${product.name}"></td>
     </tr>
     <tr>
-        <th>Email</th>
-        <td th:text="${students.email}"></td>
+        <th>Giá</th>
+        <td th:text="${product.price}"></td>
     </tr>
     <tr>
-        <th>Salary</th>
-        <td th:text="${#numbers.formatInteger(students.salary,3,'COMMA')}"></td>
-    </tr>
-    <tr>
-        <th>Date of Birth</th>
-        <td th:text="${#temporals.format(students.dob, 'dd-MM-yyyy')}"></td>
+        <th>Hãng sản xuất</th>
+        <td th:text="${product.category.name}"></td>
     </tr>
 </table>
 </body>

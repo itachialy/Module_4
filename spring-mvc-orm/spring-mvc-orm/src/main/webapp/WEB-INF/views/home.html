@@ -38,7 +38,7 @@
         <td th:text="${loop.count}"></td>
         <td th:text="${s.name}"></td>
         <td th:text="${s.email}"></td>
-        <td th:text="${s.dob}"></td>
+        <td th:text="${#temporals.format(s.dob, 'dd-MM-yyyy')}"></td>
         <td th:text="${#numbers.formatInteger(s.salary,3,'COMMA')}"></td>
         <td>
             <a th:href="@{/show-edit-form/{id}(id=${s.id})}">Sửa</a>
