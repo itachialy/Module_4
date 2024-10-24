@@ -6,13 +6,14 @@
     <style>
         .warning {
             color: red;
-            font-size: 50px;
+            font-size: 20px;
+            margin: 20px;
         }
     </style>
 </head>
 <body>
 <a th:href="@{/show-form-create}">Thêm mới product</a><br>
-<a th:href="@{/category}">Danh sách category</a>
+<a th:href="@{/category}">Danh sách category</a><br>
 <p class="warning" th:text="${add}"></p>
 <p class="warning" th:text="${edit}"></p>
 <p class="warning" th:text="${del}"></p>

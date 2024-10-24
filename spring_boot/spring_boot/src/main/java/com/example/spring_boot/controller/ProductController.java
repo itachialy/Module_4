@@ -22,14 +22,14 @@ public class ProductController {
     @GetMapping("")
     public String showList(Model model) {
         model.addAttribute("list", iProductService.findAll());
-        return "home";
+        return "/product/home";
     }
 
     @GetMapping("show-form-create")
     public String showFormCreate(Model model) {
         model.addAttribute("productC", new Product());
         model.addAttribute("listC", iCategoryService.findAll());
-        return "create";
+        return "/product/create";
     }
 
     // Thêm sản phẩm mới
@@ -57,7 +57,7 @@ public class ProductController {
             model.addAttribute("productE", existingProduct.get());
             model.addAttribute("listE", iCategoryService.findAll());
         }
-        return "update";
+        return "/product/update";
     }
 
     @PostMapping("update/{id}")
@@ -77,7 +77,7 @@ public class ProductController {
             model.addAttribute("product", optionalProduct.get());
             model.addAttribute("categories", iCategoryService.findAll());
         }
-        return "view"; // Trả về trang view để hiển thị thông tin sản phẩm
+        return "/product/view"; // Trả về trang view để hiển thị thông tin sản phẩm
     }
 
 }
