@@ -1,8 +1,0 @@
-com/example/login_i18n/LoginI18nApplication.java
- com.example.login_i18n.LoginI18nApplication
-com/example/login_i18n/controller/AuthController.java
- com.example.login_i18n.controller.AuthController
-com/example/login_i18n/i18n/AppConfiguration.java
- com.example.login_i18n.i18n.AppConfiguration
-com/example/login_i18n/model/User.java
- com.example.login_i18n.model.User
