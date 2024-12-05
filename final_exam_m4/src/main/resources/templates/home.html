@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<body>
+<div class="container py-4">
+    <h4 class="mb-3">Tìm kiếm sản phẩm</h4>
+    <form th:action="@{/search}" class="row row-cols-lg-auto g-2 align-items-center mb-4">
+        <div class="col-12">
+            <input type="text" name="name" class="form-control form-control-sm" placeholder="Nhập tên sản phẩm">
+        </div>
+        <div class="col-12">
+            <input type="text" id="price" name="price" class="form-control form-control-sm datepicker"
+                   placeholder="Nhập giá bắt đầu" autocomplete="off">
+        </div>
+        <!--        <div>-->
+        <!--            <select id="category" th:field="*{listC}"  name="category" class="form-select">-->
+        <!--                <option value="" disabled selected>Chọn hãng</option>-->
+        <!--                <option th:each="c : ${listC}" th:value="${c.id}" th:text="${c.name}"></option>-->
+        <!--            </select>-->
+        <!--        </div>-->
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-sm btn-primary">Search</button>
+        </div>
+    </form>
+    <div>
+        <th:block th:if="${msg}">
+            <h3 style="color: red" th:text="${msg}"></h3>
+        </th:block>
+    </div>
+    <div class="mb-3">
+        <a th:href="@{/create-form}" class="btn btn-outline-primary">+ Thêm sản phẩm </a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+        <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Chọn</th>
+            <th class="text-center">Tên Sản Phẩm</th>
+            <th class="text-center">Giá Bắt Đầu</th>
+            <th class="text-center">Loại Sản Phẩm</th>
+            <th class="text-center">Tình Trạng</th>
+            <th class="text-center">Hành Động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(list)}">
+            <td colspan="" class="text-center text-danger">Không tìm thấy sản phẩm</td>
+        </tr>
+        <tr th:each="p, loop : ${list} ">
+            <td class="text-center" th:text="${loop.count}"></td>
+            <td class="text-center" th:text="${p.checked}"></td>
+            <td class="text-center" th:text="${p.name}"></td>
+            <td class="text-center" th:text="${p.price}"></td>
+            <td class="text-center" th:text="${p.category.name}"></td>
+            <td class="text-center" th:text="${p.status}"></td>
+            <td class="text-center">
+                <a th:href="@{/}" class="btn btn-sm btn-outline-secondary">Sửa</a>
+                <a th:href="@{/delete/{id}(id=${p.id})}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                            th:data="|Bạn có muốn xóa sản phẩm ${p.name} ?|"
+                            onclick="return confirm(this.getAttribute('data'));">Xóa
+                    </button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation" class="py-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                <a class="page-link" th:href="@{/(page=${currentPage - 1})}">Trước</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(1, totalPages)}"
+                th:classappend="${i == currentPage} ? 'active'">
+                <a class="page-link" th:href="@{/(page=${i})}" th:text="${i}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/(page=${currentPage + 1})}">Sau</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
