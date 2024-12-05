@@ -1,0 +1,12 @@
+com/example/phone_ajax/controller/PhoneController.java
+ com.example.phone_ajax.controller.PhoneController
+com/example/phone_ajax/repository/PhoneRepository.java
+ com.example.phone_ajax.repository.PhoneRepository
+com/example/phone_ajax/model/Phone.java
+ com.example.phone_ajax.model.Phone
+com/example/phone_ajax/PhoneAjaxApplication.java
+ com.example.phone_ajax.PhoneAjaxApplication
+com/example/phone_ajax/service/PhoneService.java
+ com.example.phone_ajax.service.PhoneService
+com/example/phone_ajax/service/impl/PhoneServiceImpl.java
+ com.example.phone_ajax.service.impl.PhoneServiceImpl
